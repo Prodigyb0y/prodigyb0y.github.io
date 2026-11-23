@@ -329,16 +329,16 @@ export const projetos = [
 ];
 
 export const competencias = [
-  { nome: "Engenharia de prompts", slug: "prompt-lab", prova: "5 prompts e 6 experimentos medidos contra gabarito congelado." },
-  { nome: "RAG", slug: "assistente-rag-auditoria", prova: "Resposta com seção citada, medida em 30 perguntas." },
-  { nome: "Orquestração de GPT e Claude", slug: "assistente-rag-auditoria", prova: "Modos escalonar, adaptativo e consenso, com custo e latência medidos." },
-  { nome: "Automação com n8n, Make e Zapier", slug: "alerta-desvio-consumo", prova: "Fluxo sobre Google Sheets; o n8n também integra a API de pedidos." },
-  { nome: "APIs REST", slug: "api-pedidos-ia", prova: "API serverless com especificação OpenAPI 3.1 e 28 testes." },
-  { nome: "Vibe coding com v0", slug: "api-pedidos-portal", prova: "Portal gerado no v0 e publicado na Vercel." },
-  { nome: "Next.js", slug: "api-pedidos-portal", prova: "Portal com rota de servidor e 16 testes de contrato." },
-  { nome: "Python", slug: "dashboard-importacao", prova: "Geração de dados e script independente de conferência dos 14 recortes." },
-  { nome: "HTML, CSS e JavaScript", slug: "dashboard-importacao", prova: "Painel em um único arquivo, sem build e sem dependências." },
-  { nome: "Hugging Face", slug: "assistente-rag-auditoria", prova: "Demo publicada em um Space." },
+  { icone: "prompts", nome: "Engenharia de prompts", slug: "prompt-lab", prova: "5 prompts e 6 experimentos medidos contra gabarito congelado." },
+  { icone: "rag", nome: "RAG", slug: "assistente-rag-auditoria", prova: "Resposta com seção citada, medida em 30 perguntas." },
+  { icone: "orquestracao", nome: "Orquestração de GPT e Claude", slug: "assistente-rag-auditoria", prova: "Modos escalonar, adaptativo e consenso, com custo e latência medidos." },
+  { icone: "automacao", nome: "Automação com n8n, Make e Zapier", slug: "alerta-desvio-consumo", prova: "Fluxo sobre Google Sheets; o n8n também integra a API de pedidos." },
+  { icone: "api", nome: "APIs REST", slug: "api-pedidos-ia", prova: "API serverless com especificação OpenAPI 3.1 e 28 testes." },
+  { icone: "vibe", nome: "Vibe coding com v0", slug: "api-pedidos-portal", prova: "Portal gerado no v0 e publicado na Vercel." },
+  { icone: "nextjs", nome: "Next.js", slug: "api-pedidos-portal", prova: "Portal com rota de servidor e 16 testes de contrato." },
+  { icone: "python", nome: "Python", slug: "dashboard-importacao", prova: "Geração de dados e script independente de conferência dos 14 recortes." },
+  { icone: "web", nome: "HTML, CSS e JavaScript", slug: "dashboard-importacao", prova: "Painel em um único arquivo, sem build e sem dependências." },
+  { icone: "hf", nome: "Hugging Face", slug: "assistente-rag-auditoria", prova: "Demo publicada em um Space." },
 ];
 
 export const sobre = [
@@ -349,8 +349,9 @@ export const sobre = [
 // Experiência: nomes de sistemas e ferramentas como no LinkedIn do autor (decisão dele em 23/11/2026).
 // Sem tela nem dado das empresas. Só os dois tempos têm medição (cronometrado pelo autor). O resto é descrição, sem número.
 export const competenciasExtras = [
-  "LangChain", "GitHub", "Microsoft Fabric", "PySpark", "SQL", "Power BI", "Power Apps",
-  "Power Automate", "SharePoint", "SAP (PP e MM)", "Azure",
+  ["langchain", "LangChain"], ["github", "GitHub"], ["fabric", "Microsoft Fabric"], ["pyspark", "PySpark"],
+  ["sql", "SQL"], ["powerbi", "Power BI"], ["powerapps", "Power Apps"], ["powerautomate", "Power Automate"],
+  ["sharepoint", "SharePoint"], ["sap", "SAP (PP e MM)"], ["azure", "Azure"],
 ];
 
 export const experiencia = [

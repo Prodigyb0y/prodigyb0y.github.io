@@ -1,5 +1,6 @@
 import Link from "next/link";
 import VideoPoster from "../components/VideoPoster";
+import Icone from "../components/Icone";
 import {
   perfil, sobre, experiencia, competenciasExtras, projetos, eixos, competencias,
   formacao, cursos, hackathon, idiomas,
@@ -11,6 +12,7 @@ const manchete = {
   "dashboard-importacao": { dado: "14 de 14 recortes com diferença zero", metodo: "Conferido contra um script independente. Dados fictícios." },
 };
 
+const sigla = (n) => (/schaeffler/i.test(n) ? "S" : n.split(" ")[0].slice(0, 3).toUpperCase());
 const duracao = (s) => `${Math.floor(s / 60)} min ${String(s % 60).padStart(2, "0")} s`;
 
 export default function Inicio() {
@@ -18,7 +20,7 @@ export default function Inicio() {
     <>
       <section className="hero wrap" aria-labelledby="nome">
         <div className="hero-texto">
-          <p className="cargo">{perfil.cargo} · {perfil.local}</p>
+          <p className="cargo"><Icone nome="local" tamanho={16} /> {perfil.cargo} · {perfil.local}</p>
           <h1 id="nome">{perfil.nome}</h1>
           <p className="frase">{perfil.frase}</p>
           <div className="botoes">
@@ -44,7 +46,7 @@ export default function Inicio() {
               <span className="ponto" aria-hidden="true" />
               <p className="periodo">{e.periodo}</p>
               <h3>{e.cargo}</h3>
-              <p className="meta">{e.empresa} · {e.local}</p>
+              <p className="meta"><span className="logo" aria-hidden="true">{sigla(e.empresa)}</span>{e.empresa} · {e.local}</p>
               <p>{e.texto}</p>
               {e.topicos ? <ul className="topicos">{e.topicos.map((t) => <li key={t}>{t}</li>)}</ul> : null}
               {e.entregas ? <ul className="entregas">
@@ -93,10 +95,10 @@ export default function Inicio() {
               <article key={p.slug} className={`proj${i % 2 ? " inverso" : ""}`} data-rv>
                 <figure className="proj-video">
                   <VideoPoster src={`/video/projetos/${p.slug}.mp4`} poster={`/video/projetos/${p.slug}.webp`} titulo={`do projeto ${p.titulo}`} />
-                  <figcaption>{duracao(p.videoSegundos)}, legendas na tela e trilha musical, sem narração.</figcaption>
+                  <figcaption>{duracao(p.videoSegundos)}, legendas na tela e narração por voz sintética.</figcaption>
                 </figure>
                 <div className="proj-texto">
-                  <p className="eixo">{eixo}</p>
+                  <p className="eixo"><Icone nome={p.eixo} tamanho={18} /> {eixo}</p>
                   <h3>{p.titulo}</h3>
                   <p>{p.resumo}</p>
                   {m ? (
@@ -122,8 +124,11 @@ export default function Inicio() {
           {competencias.map((c) => (
             <li key={c.nome} data-rv>
               <Link href={`/projetos/${c.slug}/`}>
-                <span className="c-nome">{c.nome}</span>
-                <span className="c-prova">{c.prova}</span>
+                <span className="c-ic"><Icone nome={c.icone} tamanho={22} /></span>
+                <span className="c-txt">
+                  <span className="c-nome">{c.nome}</span>
+                  <span className="c-prova">{c.prova}</span>
+                </span>
               </Link>
             </li>
           ))}
@@ -131,7 +136,7 @@ export default function Inicio() {
         <div className="extras" data-rv>
           <h3>Do trabalho, sem projeto público para conferir</h3>
           <ul className="chips" data-rv>
-            {competenciasExtras.map((c) => <li key={c}>{c}</li>)}
+            {competenciasExtras.map(([ic, c]) => <li key={c}><Icone nome={ic} tamanho={16} /> {c}</li>)}
           </ul>
         </div>
       </section>
@@ -143,6 +148,7 @@ export default function Inicio() {
         <ul className="forms">
           {formacao.map((f) => (
             <li key={f.curso} data-rv>
+              <span className="f-ic"><Icone nome={/SENAI/.test(f.instituicao) ? "tecnico" : "formacao"} tamanho={22} /></span>
               <h3>{f.curso}</h3>
               <p>{f.instituicao}</p>
               <p className="meta">{f.status}</p>
@@ -169,9 +175,9 @@ export default function Inicio() {
           <p className="lede">O melhor caminho é o LinkedIn. O código está no GitHub e o Space no Hugging Face.</p>
         </div>
         <div className="botoes" data-rv>
-          <a className="btn primario" href={perfil.links.linkedin} rel="noopener">LinkedIn</a>
-          <a className="btn" href={perfil.links.github} rel="noopener">GitHub</a>
-          <a className="btn" href={perfil.links.huggingface} rel="noopener">Hugging Face</a>
+          <a className="btn primario" href={perfil.links.linkedin} rel="noopener"><Icone nome="trabalho" tamanho={18} /> LinkedIn</a>
+          <a className="btn" href={perfil.links.github} rel="noopener"><Icone nome="github" tamanho={18} /> GitHub</a>
+          <a className="btn" href={perfil.links.huggingface} rel="noopener"><Icone nome="hf" tamanho={18} /> Hugging Face</a>
         </div>
       </section>
     </>

@@ -115,6 +115,18 @@ main { padding-bottom: clamp(3rem, 7vw, 5rem); }
 .proj-video video, .video-box video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0c1218; border-radius: var(--r-lg); box-shadow: var(--shadow-lg); }
 .proj-video figcaption, .legenda-video { color: var(--muted); font-size: 0.92rem; margin-top: 0.7rem; padding-inline: 0.4rem; }
 
+/* Ícones (genéricos, decorativos) */
+.ic { flex: none; vertical-align: -0.2em; }
+.hero .cargo .ic { color: var(--accent); vertical-align: -0.15em; }
+.eixo .ic { vertical-align: -0.28em; }
+.btn .ic { vertical-align: -0.3em; margin-right: 0.15rem; }
+.comps .c-ic { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 12px; background: var(--tint); color: var(--accent); }
+.chips li { display: inline-flex; align-items: center; gap: 0.45rem; }
+.chips li .ic { color: var(--accent); }
+.forms .f-ic { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 12px; background: var(--tint); color: var(--accent); margin-bottom: 0.8rem; }
+.logo { display: inline-grid; place-items: center; min-width: 1.9rem; height: 1.9rem; padding-inline: 0.35rem; margin-right: 0.55rem; border-radius: 8px; background: var(--tint); color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; vertical-align: middle; }
+.passo .meta { display: flex; align-items: center; flex-wrap: wrap; }
+
 /* Seções */
 .secao { margin-top: clamp(4rem, 9vw, 7rem); }
 .secao-cab { margin-bottom: clamp(1.6rem, 3.5vw, 2.5rem); }
@@ -164,7 +176,7 @@ main { padding-bottom: clamp(3rem, 7vw, 5rem); }
 /* Competências */
 .comps { list-style: none; display: grid; gap: 0.9rem; grid-template-columns: 1fr; }
 @media (min-width: 46rem) { .comps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.comps a { display: block; height: 100%; padding: 1.05rem 1.3rem; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r-md); text-decoration: none; color: var(--ink); }
+.comps a { display: grid; grid-template-columns: auto 1fr; column-gap: 0.9rem; align-items: start; height: 100%; padding: 1.05rem 1.3rem; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r-md); text-decoration: none; color: var(--ink); }
 .comps .c-nome { display: block; font-weight: 620; }
 .comps .c-prova { display: block; color: var(--muted); font-size: 0.94rem; margin-top: 0.15rem; }
 @media (hover: hover) and (pointer: fine) { .comps a:hover { border-color: var(--accent); box-shadow: var(--shadow); } }
