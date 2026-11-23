@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Apresentação</title>
+<style>
+@font-face { font-family: "DM Sans"; src: url("../fonts/DMSans.woff2") format("woff2"); font-weight: 100 1000; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #10161c; font-family: "DM Sans", sans-serif; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #10161c; }
+.scene { position: absolute; left: 0; top: 0; width: 1920px; height: 930px; overflow: hidden; opacity: 0; }
+.scene.light { background: #eef1f4; color: #111a22; }
+.cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+.cam img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; opacity: 0; display: block; }
+.hl { position: absolute; border: 6px solid #b6f25a; border-radius: 8px; box-shadow: 0 0 0 3px rgba(0,0,0,.55), 0 0 28px rgba(182,242,90,.35); opacity: 0; }
+.hl.amber { border-color: #f2b84b; box-shadow: 0 0 0 3px rgba(0,0,0,.55), 0 0 28px rgba(242,184,75,.35); }
+.hl.blue { border-color: #0a5ca8; box-shadow: 0 0 0 3px rgba(255,255,255,.9), 0 0 24px rgba(10,92,168,.35); }
+#caption { position: absolute; left: 0; top: 930px; width: 1920px; height: 150px; background: #10161c; border-top: 2px solid #2f3b47; display: flex; align-items: center; justify-content: space-between; padding: 0 96px; gap: 48px; }
+#cap-text { color: #f2f5f8; font-size: 44px; line-height: 1.22; font-weight: 560; letter-spacing: -0.005em; max-width: 1450px; text-wrap: balance; }
+#cap-count { color: #f2b84b; font-size: 44px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; opacity: 0; white-space: nowrap; }
+#cap-count small { display: block; font-size: 24px; font-weight: 500; color: #a6b3bf; }
+.txt { position: absolute; left: 0; top: 0; width: 1920px; height: 930px; padding: 0 140px; }
+.big { font-size: 118px; font-weight: 650; letter-spacing: -0.03em; line-height: 1.02; }
+.sub { font-size: 46px; color: #475663; margin-top: 22px; }
+.rule { height: 4px; background: #111a22; width: 100%; }
+.counter { position: absolute; opacity: 0; }
+.counter .n { font-size: 132px; font-weight: 680; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 1; }
+.counter .l { font-size: 34px; color: #475663; margin-top: 8px; max-width: 830px; line-height: 1.2; white-space: nowrap; }
+.meth { position: absolute; width: 780px; font-size: 38px; line-height: 1.25; opacity: 0; max-width: 780px; padding: 16px 0; border-bottom: 2px solid #c3ccd5; }
+.meth b { font-weight: 640; }
+.lim { position: absolute; border-left: 10px solid #7d4300; background: #f5e8d3; padding: 22px 30px; font-size: 36px; line-height: 1.28; opacity: 0; max-width: 1640px; }
+.tag { position: absolute; font-size: 34px; color: #475663; opacity: 0; }
+.link { position: absolute; opacity: 0; font-size: 70px; font-weight: 640; letter-spacing: -0.02em; }
+.link small { display: block; font-size: 32px; font-weight: 500; color: #475663; margin-bottom: 6px; letter-spacing: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <section class="scene light" id="s1">
+    <div class="txt">
+      <div id="s1-name" style="position:absolute;left:140px;top:150px;opacity:0">
+        <div class="big">Guilherme Gabriel Bento</div>
+        <div class="sub">Analista de Planejamento Logístico</div>
+      </div>
+      <div id="s1-rule" class="rule" style="position:absolute;left:140px;top:470px;width:0"></div>
+      <div id="s1-prob" style="position:absolute;left:140px;top:510px;font-size:62px;line-height:1.18;font-weight:560;letter-spacing:-0.015em;max-width:1500px"></div>
+      <div id="s1-note" class="tag" style="left:140px;top:810px">Projetos públicos, recriados com dados fictícios.</div>
+    </div>
+  </section>
+
+  <section class="scene" id="s2"><div class="cam"></div></section>
+  <section class="scene" id="s3"><div class="cam"></div></section>
+  <section class="scene" id="s4"><div class="cam"></div></section>
+
+  <section class="scene light" id="s5">
+    <div class="txt">
+      <div id="s5-a">
+        <div class="tag" id="s5-a-t" style="left:140px;top:60px">API de pedidos com IA · medição de 21/11/2026</div>
+        <div class="counter" id="c-campos" style="left:140px;top:140px"><div class="n">0 de 160</div><div class="l">campos corretos</div></div>
+        <div class="counter" id="c-status" style="left:140px;top:370px"><div class="n">0 de 20</div><div class="l">status correto (completo ou pendente)</div></div>
+        <div class="counter" id="c-email" style="left:140px;top:600px"><div class="n">0 de 10</div><div class="l">e-mails citando exatamente os campos faltantes</div></div>
+        <div class="meth" id="m1" style="left:1010px;top:150px"><b>20 pedidos fictícios:</b> 10 completos e 10 incompletos.</div>
+        <div class="meth" id="m2" style="left:1010px;top:278px"><b>Gabarito</b> escrito e registrado antes da execução.</div>
+        <div class="meth" id="m3" style="left:1010px;top:406px"><b>Uma única rodada,</b> enviada pelo fluxo do n8n.</div>
+        <div class="meth" id="m4" style="left:1010px;top:534px"><b>Comparação manual</b> em 5 pedidos.</div>
+        <div class="lim" id="lim-a" style="left:1010px;top:690px;width:770px;font-size:33px"><b>Limites:</b> amostra pequena, uma rodada, casos escritos pelo autor.</div>
+      </div>
+      <div id="s5-b">
+        <div class="tag" id="s5-b-t" style="left:140px;top:60px">Dashboard de custos de importação</div>
+        <div class="counter" id="c-rec" style="left:140px;top:180px"><div class="n">0 de 14</div><div class="l">recortes com diferença zero</div></div>
+        <div class="meth" id="m5" style="left:1010px;top:180px"><b>14 recortes</b> calculados por um script independente (referencia.py).</div>
+        <div class="meth" id="m6" style="left:1010px;top:340px"><b>Comparados com o painel</b> em um navegador automatizado: custo total, importações, atraso médio, cobertura e pedidos críticos.</div>
+        <div class="lim" id="lim-b" style="left:140px;top:560px;width:1640px"><b>Limites:</b> a conferência prova que a soma e os filtros estão certos. Não prova que as regras fictícias correspondem a uma operação real.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene light" id="s6">
+    <div class="txt">
+      <div id="s6-h" style="position:absolute;left:140px;top:110px;font-size:84px;font-weight:650;letter-spacing:-0.025em;opacity:0">Código, método e limites em cada repositório.</div>
+      <div class="link" id="l1" style="left:140px;top:360px"><small>GitHub</small>github.com/Prodigyb0y</div>
+      <div class="link" id="l2" style="left:140px;top:530px"><small>LinkedIn</small>linkedin.com/in/guilherme-g-bento</div>
+      <div class="link" id="l3" style="left:140px;top:700px"><small>Hugging Face</small>huggingface.co/bEniac</div>
+    </div>
+  </section>
+
+  <div id="caption"><div id="cap-text"></div><div id="cap-count"></div></div>
+</div>
+
+<script>
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const easeIO = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+const easeO = (t) => 1 - Math.pow(1 - t, 3);
+const lerp = (a, b, x) => a + (b - a) * x;
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => Math.round(n).toLocaleString("pt-BR");
+
+const SCENES = [
+  { id: "s1", start: 0, dur: 10 }, { id: "s2", start: 10, dur: 25 }, { id: "s3", start: 35, dur: 20 },
+  { id: "s4", start: 55, dur: 25 }, { id: "s5", start: 80, dur: 25 }, { id: "s6", start: 105, dur: 15 },
+];
+
+// Câmera: [t, cx, cy, escala]. Área visível: 1920x930.
+const VW = 1920, VH = 930;
+const CFG = {
+  s2: {
+    layers: [["cap/c1.jpg", 0, 5.2], ["cap/c2.jpg", 4.6, 99]],
+    cam: [[0, 960, 465, 1], [1.0, 960, 465, 1], [3.4, 628, 530, 1.95], [4.6, 628, 530, 1.95], [6.0, 1290, 640, 1.75], [13.5, 1290, 640, 1.75], [15, 1290, 700, 1.75], [21.5, 1290, 700, 1.75], [24.6, 960, 465, 1]],
+    hl: [[1.4, 4.4, 327, 474, 602, 158, ""], [7, 12.8, 985, 455, 614, 156, ""], [14.2, 21, 985, 612, 614, 52, "amber"], [14.6, 21, 985, 668, 614, 52, "amber"], [15, 21, 985, 764, 614, 52, "amber"]],
+    cap: [[0, 4.6, "“Precisamos comprar 8 caixas de etiquetas adesivas para o almoxarifado.”", true], [4.6, 9, "A API lê o texto e separa 8 campos."], [9, 14, "Área, item, quantidade e unidade vêm do texto."], [14, 21.4, "O que não está no texto volta como “Não informado”. Nada é inventado."], [21.4, 25, "Console real da API, com um pedido fictício."]],
+  },
+  s3: {
+    layers: [["cap/c3.jpg", 0, 99]],
+    cam: [[0, 960, 465, 1], [1.5, 960, 465, 1], [3.5, 1290, 640, 1.6], [8, 1290, 640, 1.6], [10, 1170, 615, 2.3], [17, 1170, 615, 2.3], [19.4, 960, 465, 1]],
+    hl: [[3.6, 8.2, 985, 450, 620, 330, ""], [9.4, 17, 985, 583, 380, 66, "amber"]],
+    cap: [[0, 5, "Com os campos pendentes, a API escreve o e-mail."], [5, 9.2, "O texto é gerado pela API a partir do que falta."], [9.2, 17, "Ele cita só o que falta: prazo de entrega, valor unitário (com a moeda) e fornecedor."], [17, 20, "Exemplo fictício, no console real do portal."]],
+  },
+  s4: {
+    layers: [["cap/d1.jpg", 0, 6.8], ["cap/d2.jpg", 6.0, 18.2], ["cap/d3.jpg", 17.4, 99]],
+    cam: [[0, 1090, 465, 1], [1.2, 1090, 465, 1], [2.6, 1090, 400, 1.35], [5, 1090, 400, 1.35], [6.4, 700, 200, 2.2], [9.2, 700, 200, 2.2], [10.4, 1000, 400, 1.55], [17, 1000, 400, 1.55], [18.4, 1090, 560, 1.15], [21, 1090, 560, 1.15], [22.4, 1480, 560, 1.6], [24, 1480, 560, 1.6], [24.8, 1090, 465, 1]],
+    hl: [[2.0, 5.4, 437, 283, 314, 200, "blue"], [6.6, 9.4, 445, 160, 128, 54, "blue"], [10.6, 17, 437, 283, 314, 200, "blue"], [12, 17, 769, 283, 314, 200, "blue"]],
+    cap: [[0, 6, "Dashboard de custos de importação, com dados fictícios."], [6, 10, "Filtro por país: China."], [10, 17.4, "341 de 1.500 importações e custo total de R$ 75.041.961,00 no recorte."], [17.4, 25, "O mapa e o ranking mostram o custo por país de origem."]],
+  },
+  s1: { cap: [[0, 4, "Pedidos de compra chegam em texto livre."], [4, 10, "Alguém precisa ler, separar os campos e pedir o que falta."]] },
+  s5: { cap: [[0, 6, "API de pedidos: 20 pedidos fictícios, com gabarito registrado antes."], [6, 13.5, "Uma rodada só. Amostra pequena: o número mostra o método, não prova generalização."], [13.5, 19, "Dashboard: 14 recortes calculados por um script independente."], [19, 25, "A conferência prova a soma e os filtros, não a operação real."]] },
+  s6: { cap: [[0, 6, "Cada projeto tem repositório, método de medição e limitações."], [6, 15, "Todos os projetos públicos são recriações com dados fictícios."]] },
+};
+
+// pré-cria camadas e destaques
+for (const id of ["s2", "s3", "s4"]) {
+  const cam = document.querySelector(`#${id} .cam`);
+  const c = CFG[id];
+  c.imgEls = c.layers.map(([src]) => { const im = new Image(); im.src = src; cam.appendChild(im); return im; });
+  c.hlEls = c.hl.map(([, , x, y, w, h, cls]) => { const d = document.createElement("div"); d.className = "hl " + cls; Object.assign(d.style, { left: x - 6 + "px", top: y - 6 + "px", width: w + 12 + "px", height: h + 12 + "px" }); cam.appendChild(d); return d; });
+  c.camEl = cam;
+}
+
+function camAt(keys, t) {
+  if (t <= keys[0][0]) return keys[0].slice(1);
+  for (let i = 0; i < keys.length - 1; i++) {
+    const a = keys[i], b = keys[i + 1];
+    if (t <= b[0]) { const x = easeIO(clamp((t - a[0]) / (b[0] - a[0]))); return [lerp(a[1], b[1], x), lerp(a[2], b[2], x), lerp(a[3], b[3], x)]; }
+  }
+  return keys[keys.length - 1].slice(1);
+}
+const fadeWin = (t, a, b, f = 0.35) => clamp(Math.min((t - a) / f, (b - t) / f));
+
+function setCaption(cues, lt) {
+  const el = $("cap-text");
+  let txt = "", op = 0;
+  for (const [a, b, text, typed] of cues) {
+    if (lt >= a && lt < b) {
+      op = fadeWin(lt, a, b, 0.3);
+      txt = typed ? text.slice(0, Math.floor((lt - a) * 24)) : text;
+      if (typed) op = clamp((lt - a) / 0.2);
+    }
+  }
+  el.textContent = txt; el.style.opacity = op;
+}
+
+function layout(sceneId, lt, dur) {
+  const sc = $(sceneId);
+  const inn = clamp(lt / 0.55), out = clamp((dur - lt) / 0.45);
+  sc.style.opacity = Math.min(easeO(inn), out);
+  sc.style.transform = `translateX(${(1 - easeO(inn)) * 60}px)`;
+}
+
+function setT(t) {
+  const S = SCENES.find((s) => t >= s.start && t < s.start + s.dur) || SCENES[SCENES.length - 1];
+  const lt = t - S.start;
+  for (const s of SCENES) $(s.id).style.opacity = 0;
+  layout(S.id, lt, S.dur);
+  $("cap-count").style.opacity = 0;
+  const c = CFG[S.id];
+  setCaption(c.cap, lt);
+
+  if (c.layers) {
+    const [cx, cy, sc] = camAt(c.cam, lt);
+    let tx = VW / 2 - cx * sc, ty = VH / 2 - cy * sc;
+    tx = clamp(tx, VW - 1920 * sc, 0); ty = clamp(ty, VH - 1080 * sc, 0);
+    c.camEl.style.transform = `translate(${tx}px, ${ty}px) scale(${sc})`;
+    c.layers.forEach(([, a, b], i) => {
+      const prevEnd = i > 0 ? c.layers[i - 1][2] : -1;
+      const inn = i === 0 ? 1 : clamp((lt - a) / 0.8);
+      // a camada anterior fica por baixo até a seguinte cobrir; a última nunca some
+      c.imgEls[i].style.opacity = lt >= a ? easeIO(inn) : 0;
+      c.imgEls[i].style.zIndex = i;
+    });
+    c.hl.forEach(([a, b], i) => { c.hlEls[i].style.opacity = fadeWin(lt, a, b, 0.35); c.hlEls[i].style.zIndex = 50; });
+  }
+
+  if (S.id === "s4") {
+    if (lt >= 9.6 && lt < 17.4) {
+      const n = lerp(1500, 341, easeIO(clamp((lt - 10.2) / 2.2)));
+      $("cap-count").innerHTML = `${fmt(n)} de 1.500<small>importações no recorte</small>`;
+      $("cap-count").style.opacity = fadeWin(lt, 9.6, 17.4, 0.4);
+    }
+  }
+
+  if (S.id === "s1") {
+    $("s1-name").style.opacity = easeO(clamp((lt - 0.3) / 0.8));
+    $("s1-name").style.transform = `translateY(${(1 - easeO(clamp((lt - 0.3) / 0.8))) * 14}px)`;
+    $("s1-rule").style.width = 1640 * easeIO(clamp((lt - 1.4) / 1.0)) + "px";
+    const full = "Pedidos de compra chegam em texto livre. Alguém precisa ler, separar os campos e pedir o que falta.";
+    $("s1-prob").textContent = full.slice(0, Math.floor(Math.max(0, lt - 2.4) * 17));
+    $("s1-note").style.opacity = easeO(clamp((lt - 7.2) / 0.6));
+  }
+
+  if (S.id === "s5") {
+    const A = lt < 13.5;
+    $("s5-a").style.display = A ? "block" : "none";
+    $("s5-b").style.display = A ? "none" : "block";
+    const cnt = (id, t0, target, total) => {
+      const el = $(id); const k = clamp((lt - t0) / 0.5);
+      el.style.opacity = easeO(k); el.style.transform = `translateY(${(1 - easeO(k)) * 16}px)`;
+      el.querySelector(".n").textContent = `${Math.round(target * easeO(clamp((lt - t0) / 1.6)))} de ${total}`;
+    };
+    const show = (id, t0, op = 1) => { const el = $(id); const k = easeO(clamp((lt - t0) / 0.45)); el.style.opacity = k * op; el.style.transform = `translateY(${(1 - k) * 12}px)`; };
+    if (A) {
+      show("s5-a-t", 0.2);
+      cnt("c-campos", 0.7, 160, 160); cnt("c-status", 1.7, 20, 20); cnt("c-email", 2.7, 10, 10);
+      show("m1", 4); show("m2", 5.5); show("m3", 7); show("m4", 8.5); show("lim-a", 10.3);
+      const o = clamp((13.5 - lt) / 0.4); $("s5-a").style.opacity = o;
+    } else {
+      $("s5-a").style.opacity = 1;
+      const l2 = lt - 13.5; const lt0 = lt;
+      $("s5-b").style.opacity = clamp(l2 / 0.45);
+      show("s5-b-t", 14); cnt("c-rec", 14.6, 14, 14);
+      show("m5", 16.4); show("m6", 18.2); show("lim-b", 21);
+    }
+  }
+
+  if (S.id === "s6") {
+    const k = (id, t0) => { const el = $(id); const x = easeO(clamp((lt - t0) / 0.6)); el.style.opacity = x; el.style.transform = `translateX(${(1 - x) * -30}px)`; };
+    k("s6-h", 0.3); k("l1", 2); k("l2", 3.2); k("l3", 4.4);
+  }
+}
+window.setT = setT;
+window.ready = Promise.all([document.fonts.ready, ...[...document.images].map((i) => i.decode().catch(() => {}))]);
+</script>
+</body>
+</html>
