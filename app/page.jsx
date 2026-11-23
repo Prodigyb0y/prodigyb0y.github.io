@@ -1,6 +1,8 @@
 import Link from "next/link";
 import VideoPoster from "../components/VideoPoster";
 import Icone from "../components/Icone";
+import Palavras from "../components/Palavras";
+import Movimento from "../components/Movimento";
 import {
   perfil, sobre, experiencia, competenciasExtras, projetos, eixos, competencias,
   formacao, cursos, hackathon, idiomas,
@@ -18,10 +20,11 @@ const duracao = (s) => `${Math.floor(s / 60)} min ${String(s % 60).padStart(2, "
 export default function Inicio() {
   return (
     <>
+      <Movimento />
       <section className="hero wrap" aria-labelledby="nome">
         <div className="hero-texto">
           <p className="cargo"><Icone nome="local" tamanho={16} /> {perfil.cargo} · {perfil.local}</p>
-          <h1 id="nome">{perfil.nome}</h1>
+          <h1 id="nome"><span className="sr-so">{perfil.nome}</span><span aria-hidden="true"><Palavras texto={perfil.nome} /></span></h1>
           <p className="frase">{perfil.frase}</p>
           <div className="botoes">
             <a className="btn primario" href="#projetos">Ver projetos</a>
@@ -30,13 +33,20 @@ export default function Inicio() {
           </div>
         </div>
         <figure className="hero-foto">
-          <img src="/img/foto-guilherme.webp" width="900" height="900" alt="Foto de Guilherme Gabriel Bento, de frente, com camisa preta" fetchPriority="high" decoding="async" />
+          <img className="foto-escura" src="/img/foto-guilherme-escura.webp" width="900" height="900" alt="Foto de Guilherme Gabriel Bento, de frente, com camisa preta" fetchPriority="high" decoding="async" />
+          <img className="foto-clara" src="/img/foto-guilherme.webp" width="900" height="900" alt="" loading="lazy" decoding="async" />
         </figure>
       </section>
 
+      <div className="fita" aria-hidden="true">
+        <ul>
+          {[0, 1].map((k) => competencias.map((c) => <li key={k + c.nome}>{c.nome}</li>))}
+        </ul>
+      </div>
+
       <section id="historia" className="secao wrap" aria-labelledby="h-historia">
         <div className="secao-cab" data-rv>
-          <h2 id="h-historia">Minha história</h2>
+          <h2 id="h-historia"><span className="sr-so">Minha história</span><span aria-hidden="true"><Palavras texto="Minha história" /></span></h2>
           {sobre.map((t) => <p key={t} className="lede">{t}</p>)}
         </div>
 
@@ -81,7 +91,7 @@ export default function Inicio() {
 
       <section id="projetos" className="secao wrap" aria-labelledby="h-projetos">
         <div className="secao-cab" data-rv>
-          <h2 id="h-projetos">Projetos</h2>
+          <h2 id="h-projetos"><span className="sr-so">Projetos</span><span aria-hidden="true"><Palavras texto="Projetos" /></span></h2>
           <p className="lede">
             Seis projetos públicos, todos com dados fictícios. Cada um tem vídeo, repositório e uma página com o método
             de medição, os resultados e o que eles não provam.
@@ -117,7 +127,7 @@ export default function Inicio() {
 
       <section id="competencias" className="secao wrap" aria-labelledby="h-comp">
         <div className="secao-cab" data-rv>
-          <h2 id="h-comp">Competências</h2>
+          <h2 id="h-comp"><span className="sr-so">Competências</span><span aria-hidden="true"><Palavras texto="Competências" /></span></h2>
           <p className="lede">As do primeiro grupo têm um projeto público que as prova, e cada uma leva até ele. As do segundo vêm do meu trabalho e do meu LinkedIn, e não têm projeto público para conferir.</p>
         </div>
         <ul className="comps">
@@ -143,7 +153,7 @@ export default function Inicio() {
 
       <section id="formacao" className="secao wrap" aria-labelledby="h-form">
         <div className="secao-cab" data-rv>
-          <h2 id="h-form">Formação</h2>
+          <h2 id="h-form"><span className="sr-so">Formação</span><span aria-hidden="true"><Palavras texto="Formação" /></span></h2>
         </div>
         <ul className="forms">
           {formacao.map((f) => (
@@ -171,7 +181,7 @@ export default function Inicio() {
 
       <section id="contato" className="secao wrap fim" aria-labelledby="h-contato">
         <div className="secao-cab" data-rv>
-          <h2 id="h-contato">Contato</h2>
+          <h2 id="h-contato"><span className="sr-so">Contato</span><span aria-hidden="true"><Palavras texto="Contato" /></span></h2>
           <p className="lede">O melhor caminho é o LinkedIn. O código está no GitHub e o Space no Hugging Face.</p>
         </div>
         <div className="botoes" data-rv>
