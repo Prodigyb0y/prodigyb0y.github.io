@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { eixos, projetos } from "../../../data/site";
+import VideoPoster from "../../../components/VideoPoster";
 import Resultados from "../../../components/Resultados";
 
 export function generateStaticParams() {
@@ -21,12 +22,19 @@ export default async function Projeto({ params }) {
   const eixo = eixos.find((e) => e.id === p.eixo)?.nome;
 
   return (
-    <article>
+    <article className="wrap detalhe">
       <header className="cab-projeto">
-        <p className="eixo"><Link href="/projetos/">Projetos</Link> · {eixo}</p>
+        <p className="eixo"><Link href="/#projetos">← Todos os projetos</Link> · {eixo}</p>
         <h1>{p.titulo}</h1>
         <p className="intro">{p.resumo}</p>
       </header>
+
+      <section className="video-topo" aria-label="Vídeo do projeto">
+        <div className="video-box">
+          <VideoPoster src={`/video/projetos/${p.slug}.mp4`} poster={`/video/projetos/${p.slug}.webp`} titulo={`do projeto ${p.titulo}`} />
+          <p className="legenda-video">{Math.floor(p.videoSegundos / 60)} min {String(p.videoSegundos % 60).padStart(2, "0")} s, com legendas na tela e sem narração. Prints das demos públicas, com dados fictícios.</p>
+        </div>
+      </section>
 
       <section className="bloco" aria-labelledby="problema">
         <h2 id="problema">Problema</h2>
@@ -49,17 +57,6 @@ export default async function Projeto({ params }) {
           ) : (
             <p>Este projeto não tem demo interativa. O código e os resultados estão no repositório.</p>
           )}
-        </div>
-      </section>
-
-      <section className="bloco" aria-labelledby="video">
-        <h2 id="video">Vídeo do projeto</h2>
-        <div className="video-box">
-          <video controls preload="none" poster={`/video/projetos/${p.slug}.webp`} width="1920" height="1080">
-            <source src={`/video/projetos/${p.slug}.mp4`} type="video/mp4" />
-            Seu navegador não reproduz vídeo. O arquivo está em /video/projetos/{p.slug}.mp4.
-          </video>
-          <p className="legenda-video">{Math.floor(p.videoSegundos / 60)} min {String(p.videoSegundos % 60).padStart(2, "0")} s, com legendas na tela e sem narração. Prints das demos públicas, com dados fictícios.</p>
         </div>
       </section>
 

@@ -341,33 +341,149 @@ export const competencias = [
   { nome: "Hugging Face", slug: "assistente-rag-auditoria", prova: "Demo publicada em um Space." },
 ];
 
+export const sobre = [
+  "Sou analista de planejamento logístico na Schaeffler, em Sorocaba. Uso IA generativa e automação para construir soluções de negócio de ponta a ponta.",
+  "Comecei em logística em 2018, passei por vendas para grandes contas e pelo chão de fábrica, e foi essa base operacional que me deu a visão de quem usa a ferramenta. Hoje trabalho lado a lado com os donos de processo: entendo o problema, monto a solução e meço o que mudou. Como a produção é interna, recriei esses padrões com dados fictícios em repositórios públicos, para que dê para conferir.",
+];
+
+// Experiência: nomes de sistemas e ferramentas como no LinkedIn do autor (decisão dele em 23/11/2026).
+// Sem tela nem dado das empresas. Só os dois tempos têm medição (cronometrado pelo autor). O resto é descrição, sem número.
+export const competenciasExtras = [
+  "LangChain", "GitHub", "Microsoft Fabric", "PySpark", "SQL", "Power BI", "Power Apps",
+  "Power Automate", "SharePoint", "SAP (PP e MM)", "Azure",
+];
+
 export const experiencia = [
   {
-    cargo: "Analista de Planejamento Logístico",
-    empresa: "Schaeffler Group",
-    periodo: "06/2025 – atual",
+    periodo: "10/2018 – 09/2020",
+    cargo: "Estágio Auxiliar de Logística",
+    empresa: "EFX Importação",
     local: "Sorocaba, SP",
-    texto:
-      "Automações e análises de dados aplicadas à operação logística.",
-    resultados: [
-      "Atualização de ordens de produção: de cerca de 20 minutos para cerca de 3 minutos (cronometrado).",
-      "Distribuição de desvio de consumo em cerca de 2 minutos, sem intervenção manual (cronometrado).",
+    texto: "Meu primeiro contato com a rotina de logística.",
+    topicos: [
+      "Planejamento e execução de atividades dentro dos prazos combinados.",
+      "Definição de planos, metas e cronogramas para concluir os projetos no prazo.",
     ],
   },
   {
+    periodo: "10/2020 – 10/2021",
+    cargo: "Assistente de Vendas Key Account",
+    empresa: "EFX Importação",
+    local: "Sorocaba, SP",
+    texto: "Administração operacional da carteira de grandes contas do varejo (Carrefour, Pão de Açúcar, Sam's Club, Saint Marchet e Pague Menos), no ERP TOTVS WinThor.",
+    topicos: [
+      "Análise diária da curva de demanda, acompanhamento de faturamento, controle de estoque e análise de corte de pedidos.",
+      "Regras de validade dos produtos e validação fiscal de NCMs.",
+      "Participei da troca do controle de estoque manual, em Google Sheets, para o ERP WinThor, com contato direto com representantes comerciais, recebimento e setor fiscal.",
+    ],
+  },
+  {
+    periodo: "10/2021 – 09/2022",
+    cargo: "Aprendiz Operador de Processos de Fabricação Mecânica",
+    empresa: "Schaeffler Group",
+    local: "Sorocaba, SP",
+    texto: "Aprendizagem integrada ao curso de Operador de Processos de Fabricação Mecânica do SENAI: o conteúdo teórico e prático da mecânica industrial aplicado na fábrica.",
+    topicos: [
+      "Experiência de aprendizagem no setor de Shop Floor Control, com análise de requisitos no SAP (módulo EP1).",
+    ],
+  },
+  {
+    periodo: "09/2022 – 02/2024",
+    cargo: "Operador de Produção II",
+    empresa: "Schaeffler Group",
+    local: "Sorocaba, SP",
+    texto: "Atuação no fluxo de manufatura. Essa base operacional foi essencial para a visão orientada a quem usa a ferramenta, que sustenta a minha transição para soluções sistêmicas e arquiteturas de dados.",
+    topicos: ["Vivência prática com metodologias Lean (5S e Kaizen)."],
+  },
+  {
+    periodo: "02/2024 – 06/2025",
     cargo: "Analista de Controle de Produção",
     empresa: "Schaeffler Group",
-    periodo: "02/2024 – 06/2025",
     local: "Sorocaba, SP",
     texto:
-      "Auditoria de consumo, apropriação de custos e reconciliação físico-contábil de ordens de produção. Análise integrada de dados entre os sistemas de produção e de gestão para identificar causas de paradas, refugo e gargalos, e indicadores de acuracidade de estoque e produtividade.",
-    resultados: [],
+      "Responsável por conectar os indicadores de produção às necessidades do negócio por meio da análise de dados. Auditoria de consumo, apropriação de custos e reconciliação físico-contábil de ordens de produção.",
+    topicos: [
+      "Dashboards interativos em Power BI para acompanhar indicadores industriais, desvios e gargalos, apoiando as decisões da gestão.",
+      "Acompanhamento ativo de ordens no SAP (PP/MM) e apoio operacional na implantação e na estabilização de sistemas de execução da manufatura (MES Forcam).",
+      "Análise integrada de dados entre o MES e o ERP para achar causas de paradas, refugo e gargalos, com indicadores de acuracidade de estoque e produtividade.",
+      "Metodologias ágeis e de qualidade para mapear oportunidades operacionais e transformá-las em soluções de sistemas e de análise.",
+    ],
+    entregas: [
+      {
+        titulo: "Rotina de auditoria automatizada",
+        problema: "Inconsistências entre apontamentos e estoque eram achadas por verificação manual, depois que o erro já tinha acontecido.",
+        acao: "Escrevi rotinas em Python, integradas ao Power Automate, que varrem as bases e mandam alertas preventivos.",
+        resultado: "Anomalias identificadas antes do fechamento contábil. Sem medição.",
+      },
+    ],
+  },
+  {
+    periodo: "06/2025 – atual",
+    cargo: "Analista de Planejamento Logístico",
+    empresa: "Schaeffler Group",
+    local: "Sorocaba, SP",
+    texto:
+      "Ponto focal da digitalização e da automação do setor logístico: pipelines de dados, modelagem para dashboards, aplicações low-code e assistentes de IA generativa aplicados à operação.",
+    topicos: [
+      "Migração de fluxos legados para a nuvem no Microsoft Fabric, com Lakehouse, Dataflows Gen2, Data Pipelines, notebooks em PySpark e consultas em SQL para ingestão, limpeza e modelagem dimensional.",
+      "Otimização das rotinas de extração de dados operacionais do SAP, para reduzir o tempo de processamento.",
+      "Conjuntos de dados e dashboards em Power BI para indicadores de MRP, Shop Floor Control e desenvolvimento de embalagens.",
+      "Atuação consultiva junto aos donos de processo: parceria direta com o key user de PP/MM, documentação dos fluxos de dados e implantação de agentes de IA com RAG.",
+    ],
+    entregas: [
+      {
+        titulo: "Atualização de ordens de produção",
+        problema: "Consolidar as bases operacionais à mão levava cerca de 20 minutos a cada atualização.",
+        acao: "Montei um fluxo no Power Automate que captura e valida os metadados e aciona os Dataflows do Microsoft Fabric.",
+        resultado: "Cerca de 3 minutos, sem intervenção manual. Cronometrado.",
+        medido: true,
+      },
+      {
+        titulo: "Distribuição de desvio de consumo",
+        problema: "Alguém identificava e enviava à mão, por área, as ordens com desvio.",
+        acao: "Estruturei o Lakehouse, o modelo semântico, o dashboard em Power BI e o envio automático por e-mail.",
+        resultado: "Execução em cerca de 2 minutos, sem intervenção manual. Cronometrado.",
+        medido: true,
+      },
+      {
+        titulo: "Assistente de consulta para líderes de produção",
+        problema: "Líderes de produção tinham dificuldade com o sistema de apontamento (MES).",
+        acao: "Organizei a documentação e as dúvidas recorrentes numa base de consulta com RAG.",
+        resultado: "Os líderes consultam o assistente, e a solução está em uso. Sem medição.",
+      },
+      {
+        titulo: "Agentes locais para engenharia de dados",
+        problema: "Mapear dicionários de dados e testar na nuvem era lento.",
+        acao: "Rodei agentes locais (Qwen e Llama, em Miniforge e Jupyter) ligados por API de consulta ao Azure e ao Fabric, para mapear tabelas e validar código sem usar a nuvem.",
+        resultado: "Validações de ETL mais rápidas e sem gasto de créditos de nuvem. Sem medição.",
+      },
+      {
+        titulo: "Reabertura de ordens",
+        problema: "O controle era feito por muitos e-mails, e isso travava a conversa entre áreas.",
+        acao: "Prototipei com o GitHub Copilot um aplicativo em Power Apps, com aprovação em dois níveis no Power Automate e no SharePoint.",
+        resultado: "O fluxo por e-mail acabou e passou a haver indicadores por motivo e setor. Sem medição.",
+      },
+      {
+        titulo: "Painel de custos de importação",
+        problema: "A análise dos encargos sobre o valor FOB estava espalhada em planilhas.",
+        acao: "Montei um dashboard em Power BI com recortes por país, fornecedor e material, usando o Microsoft Copilot para analisar tendências.",
+        resultado: "Visão consolidada para planos de redução de custos. Sem medição.",
+        slug: "dashboard-importacao",
+      },
+      {
+        titulo: "Reembolso de frete especial",
+        problema: "O controle antigo, em VBA, travava e dependia de um computador local.",
+        acao: "Levantei os requisitos e recriei a solução em Power Apps e Power Automate, para sete cenários operacionais, com comprovantes em HTML e governança do processo. Prototipei o front-end com o GitHub Copilot e o Claude Haiku.",
+        resultado: "Os travamentos acabaram e os documentos ficaram centralizados. Sem medição.",
+      },
+    ],
   },
 ];
 
 export const formacao = [
   { curso: "Tecnólogo em Análise e Desenvolvimento de Sistemas", instituicao: "Centro Universitário Internacional Uninter", status: "Conclusão prevista em 12/2027 (cursando)" },
   { curso: "Tecnólogo em Ciência de Dados", instituicao: "Universidade Cruzeiro do Sul", status: "Conclusão prevista em 12/2028 (cursando)" },
+  { curso: "Operador de Processos de Fabricação Mecânica", instituicao: "SENAI São Paulo", status: "10/2021 – 10/2022" },
 ];
 
 export const cursos = [

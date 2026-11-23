@@ -1,3 +1,5 @@
+> **Atualização de 23/11/2026 (redesenho em página única).** O site passou a ter uma página inicial com a história, os vídeos por projeto, as competências, a formação e o contato, mais uma página de detalhe por projeto. As rotas /projetos, /competencias, /experiencia, /video e /contato foram removidas. Reaudit do novo layout: axe sem violações em 7 páginas (claro e escuro, 390, 820 e 1440 px), sem rolagem horizontal, ordem de foco por teclado conferida. Lighthouse com servidor que comprime (como o GitHub Pages): desempenho 97 a 100, acessibilidade 100, boas práticas 100, SEO 100. O teste com leitor de tela continua não feito.
+
 # Auditoria do portfólio (modo repositório, árvore de trabalho)
 
 Data: 2026-11-23. Fonte: `/home/claude/site`, branch `feat/portfolio`, sem commit. Páginas geradas em `out/` e servidas em localhost.
