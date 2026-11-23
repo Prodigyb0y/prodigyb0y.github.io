@@ -4,6 +4,7 @@ import { ViewTransition } from "react";
 import Link from "next/link";
 import Nav from "../components/Nav";
 import Reveal from "../components/Reveal";
+import Holofote from "../components/Holofote";
 import { perfil, aviso } from "../data/site";
 
 const dmSans = localFont({
@@ -23,7 +24,7 @@ export const metadata = {
 
 export const viewport = { width: "device-width", initialScale: 1 };
 
-const temaInicial = `document.documentElement.classList.add("js");try{var t=localStorage.getItem("tema");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}`;
+const temaInicial = `document.documentElement.classList.add("js");try{var t=localStorage.getItem("tema");if(t!=="light"&&t!=="dark"){t="dark"}document.documentElement.dataset.theme=t}catch(e){}`;
 
 export default function RootLayout({ children }) {
   return (
@@ -41,6 +42,8 @@ export default function RootLayout({ children }) {
           </div>
         </header>
         <Reveal />
+        <Holofote />
+        <div className="cinema" aria-hidden="true"><i /><i /></div>
         <ViewTransition>
           <main id="conteudo" tabIndex={-1}>
             {children}
