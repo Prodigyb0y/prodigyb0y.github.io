@@ -2,11 +2,16 @@
 import { useState } from "react";
 
 // Mostra a capa como imagem (carregada só perto da tela) e troca pelo vídeo ao clicar.
+// Só um vídeo toca por vez: ao iniciar este, pausa todos os outros da página.
+function pararOutros(e) {
+  document.querySelectorAll("video").forEach((v) => { if (v !== e.currentTarget) v.pause(); });
+}
+
 export default function VideoPoster({ src, poster, titulo, prioridade = false }) {
   const [ativo, setAtivo] = useState(false);
   if (ativo) {
     return (
-      <video controls autoPlay preload="auto" width="1920" height="1080" aria-label={`Vídeo ${titulo}`}>
+      <video controls autoPlay preload="auto" onPlay={pararOutros} width="1920" height="1080" aria-label={`Vídeo ${titulo}`}>
         <source src={src} type="video/mp4" />
       </video>
     );

@@ -163,7 +163,7 @@ main { padding-bottom: clamp(3rem, 7vw, 5rem); }
 .proj { display: grid; gap: 1.4rem clamp(1.5rem, 4vw, 3rem); align-items: center; grid-template-columns: 1fr; }
 @media (min-width: 62rem) {
   .proj { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
-  .proj.inverso { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .proj.inverso { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
   .proj.inverso .proj-video { order: 2; }
 }
 .proj-video { margin: 0; }
