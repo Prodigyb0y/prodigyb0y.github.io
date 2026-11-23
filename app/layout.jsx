@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import Nav from "../components/Nav";
+import Reveal from "../components/Reveal";
 import { perfil, aviso } from "../data/site";
 
 const dmSans = localFont({
@@ -22,7 +23,7 @@ export const metadata = {
 
 export const viewport = { width: "device-width", initialScale: 1 };
 
-const temaInicial = `try{var t=localStorage.getItem("tema");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}`;
+const temaInicial = `document.documentElement.classList.add("js");try{var t=localStorage.getItem("tema");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}`;
 
 export default function RootLayout({ children }) {
   return (
@@ -38,15 +39,16 @@ export default function RootLayout({ children }) {
             <Nav />
           </div>
         </header>
+        <Reveal />
         <ViewTransition>
           <main id="conteudo" tabIndex={-1}>
-            <div className="wrap">{children}</div>
+            {children}
           </main>
         </ViewTransition>
         <footer className="rodape">
           <div className="wrap">
             <p>{aviso}</p>
-            <p>A produção interna do autor não é pública e não aparece aqui.</p>
+            <p>Telas e dados da produção interna do autor não são públicos e não aparecem aqui.</p>
           </div>
         </footer>
       </body>
