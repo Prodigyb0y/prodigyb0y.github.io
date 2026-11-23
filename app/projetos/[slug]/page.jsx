@@ -32,7 +32,7 @@ export default async function Projeto({ params }) {
       <section className="video-topo" aria-label="Vídeo do projeto">
         <div className="video-box">
           <VideoPoster src={`/video/projetos/${p.slug}.mp4`} poster={`/video/projetos/${p.slug}.webp`} titulo={`do projeto ${p.titulo}`} />
-          <p className="legenda-video">{Math.floor(p.videoSegundos / 60)} min {String(p.videoSegundos % 60).padStart(2, "0")} s, com legendas na tela e trilha musical, sem narração. Prints das demos públicas, com dados fictícios.</p>
+          <p className="legenda-video">{Math.floor(p.videoSegundos / 60)} min {String(p.videoSegundos % 60).padStart(2, "0")} s, com legendas na tela e narração por voz sintética. Prints das demos públicas, com dados fictícios.</p>
         </div>
       </section>
 

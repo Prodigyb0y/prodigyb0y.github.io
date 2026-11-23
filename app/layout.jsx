@@ -50,6 +50,7 @@ export default function RootLayout({ children }) {
           <div className="wrap">
             <p>{aviso}</p>
             <p>Telas e dados da produção interna do autor não são públicos e não aparecem aqui.</p>
+            <p>A narração dos vídeos é voz sintética em português do Brasil (Piper, voz Faber, dados CC0) e lê as legendas na tela. Não é a voz do autor.</p>
           </div>
         </footer>
       </body>
