@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import VideoPoster from "../components/VideoPoster";
 import {
   perfil, sobre, experiencia, competenciasExtras, projetos, eixos, competencias,
@@ -16,8 +14,6 @@ const manchete = {
 const duracao = (s) => `${Math.floor(s / 60)} min ${String(s % 60).padStart(2, "0")} s`;
 
 export default function Inicio() {
-  // Capa do vídeo principal embutida no HTML: é o maior elemento da primeira tela e não espera outra requisição.
-  const capa = `data:image/webp;base64,${readFileSync(path.join(process.cwd(), "data", "capa-inline.webp")).toString("base64")}`;
   return (
     <>
       <section className="hero wrap" aria-labelledby="nome">
@@ -31,9 +27,8 @@ export default function Inicio() {
             <a className="btn" href={perfil.links.linkedin} rel="noopener">LinkedIn</a>
           </div>
         </div>
-        <figure className="hero-video">
-          <VideoPoster src="/video/apresentacao.mp4" poster={capa} titulo="de apresentação" prioridade />
-          <figcaption>Apresentação dos projetos, 2 min, com legendas na tela e sem narração.</figcaption>
+        <figure className="hero-foto">
+          <img src="/img/foto-guilherme.webp" width="900" height="900" alt="Foto de Guilherme Gabriel Bento, de frente, com camisa preta" fetchPriority="high" decoding="async" />
         </figure>
       </section>
 
@@ -98,7 +93,7 @@ export default function Inicio() {
               <article key={p.slug} className={`proj${i % 2 ? " inverso" : ""}`} data-rv>
                 <figure className="proj-video">
                   <VideoPoster src={`/video/projetos/${p.slug}.mp4`} poster={`/video/projetos/${p.slug}.webp`} titulo={`do projeto ${p.titulo}`} />
-                  <figcaption>{duracao(p.videoSegundos)}, legendas na tela, sem narração.</figcaption>
+                  <figcaption>{duracao(p.videoSegundos)}, legendas na tela e trilha musical, sem narração.</figcaption>
                 </figure>
                 <div className="proj-texto">
                   <p className="eixo">{eixo}</p>
@@ -135,7 +130,7 @@ export default function Inicio() {
         </ul>
         <div className="extras" data-rv>
           <h3>Do trabalho, sem projeto público para conferir</h3>
-          <ul className="chips">
+          <ul className="chips" data-rv>
             {competenciasExtras.map((c) => <li key={c}>{c}</li>)}
           </ul>
         </div>

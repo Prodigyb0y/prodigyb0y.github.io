@@ -33,6 +33,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <a className="skip" href="#conteudo">Pular para o conteúdo</a>
+        <div className="progresso" aria-hidden="true" />
         <header className="topo">
           <div className="wrap">
             <Link className="marca" href="/">{perfil.nome}</Link>
