@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 
 const itens = [
   ["/#historia", "História"],
@@ -17,11 +18,33 @@ export default function Nav() {
     setTema(document.documentElement.dataset.theme || "light");
   }, []);
 
+  const [ativo, setAtivo] = useState("");
+
+  // Destaca no menu a seção que está na tela.
+  useEffect(() => {
+    const secoes = itens.map(([h]) => document.getElementById(h.slice(2))).filter(Boolean);
+    if (!secoes.length || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(
+      (es) => es.forEach((e) => { if (e.isIntersecting) setAtivo(e.target.id); }),
+      { rootMargin: "-35% 0px -55% 0px" }
+    );
+    secoes.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   function alternar() {
     const novo = tema === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = novo;
-    setTema(novo);
-    try { localStorage.setItem("tema", novo); } catch (e) {}
+    const aplicar = () => {
+      document.documentElement.dataset.theme = novo;
+      setTema(novo);
+      try { localStorage.setItem("tema", novo); } catch (e) {}
+    };
+    const reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (document.startViewTransition && !reduz) {
+      document.startViewTransition(() => { flushSync(aplicar); });
+    } else {
+      aplicar();
+    }
   }
 
   return (
@@ -29,7 +52,7 @@ export default function Nav() {
       <nav aria-label="Principal">
         <ul className="nav">
           {itens.map(([href, rotulo]) => (
-            <li key={href}><Link href={href}>{rotulo}</Link></li>
+            <li key={href}><Link href={href} aria-current={ativo === href.slice(2) ? "location" : undefined}>{rotulo}</Link></li>
           ))}
         </ul>
       </nav>

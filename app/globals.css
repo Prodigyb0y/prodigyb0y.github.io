@@ -101,17 +101,19 @@ main { padding-bottom: clamp(3rem, 7vw, 5rem); }
 
 /* Início */
 .hero { display: grid; gap: clamp(2rem, 5vw, 3.5rem); grid-template-columns: 1fr; align-items: center; padding-top: clamp(1.5rem, 4vw, 3rem); }
-@media (min-width: 62rem) { .hero { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+@media (min-width: 62rem) { .hero { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
 .hero .cargo { color: var(--muted); margin: 0 0 0.9rem; }
 .hero .frase { font-size: 1.15rem; margin-top: 1.2rem; }
-.hero-video { margin: 0; }
+.hero-foto { margin: 0; justify-self: center; width: min(100%, 26rem); }
+.hero-foto img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--r-lg); box-shadow: var(--shadow-lg); background: #e3edf4; }
+@media (min-width: 62rem) { .hero-foto { justify-self: end; } }
 .capa { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-lg); line-height: 0; }
 .capa img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
 .capa .play { position: absolute; right: 1.2rem; bottom: 1.2rem; width: 4rem; height: 4rem; border-radius: 50%; background: var(--accent); box-shadow: 0 8px 24px -8px rgba(0,0,0,.4); }
 .capa .play::after { content: ""; position: absolute; left: 1.45rem; top: 1.1rem; border-style: solid; border-width: 0.9rem 0 0.9rem 1.45rem; border-color: transparent transparent transparent var(--accent-ink); }
 @media (hover: hover) and (pointer: fine) { .capa:hover .play { transform: scale(1.06); } }
-.hero-video video, .proj-video video, .video-box video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0c1218; border-radius: var(--r-lg); box-shadow: var(--shadow-lg); }
-.hero-video figcaption, .proj-video figcaption, .legenda-video { color: var(--muted); font-size: 0.92rem; margin-top: 0.7rem; padding-inline: 0.4rem; }
+.proj-video video, .video-box video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0c1218; border-radius: var(--r-lg); box-shadow: var(--shadow-lg); }
+.proj-video figcaption, .legenda-video { color: var(--muted); font-size: 0.92rem; margin-top: 0.7rem; padding-inline: 0.4rem; }
 
 /* Seções */
 .secao { margin-top: clamp(4rem, 9vw, 7rem); }
@@ -149,7 +151,7 @@ main { padding-bottom: clamp(3rem, 7vw, 5rem); }
 .proj { display: grid; gap: 1.4rem clamp(1.5rem, 4vw, 3rem); align-items: center; grid-template-columns: 1fr; }
 @media (min-width: 62rem) {
   .proj { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
-  .proj.inverso { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .proj.inverso { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
   .proj.inverso .proj-video { order: 2; }
 }
 .proj-video { margin: 0; }
@@ -220,18 +222,84 @@ details dd { margin: 0.1rem 0 0; color: var(--muted); }
 .figura figcaption { color: var(--muted); font-size: 0.92rem; margin-top: 0.6rem; }
 .links li a { display: inline-block; padding-block: 0.15rem; }
 
-/* Movimento: só quando a pessoa não pede redução */
+.progresso { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 30; background: var(--accent); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+.nav a[aria-current="location"] { color: var(--ink); background: var(--tint); }
+.secao-cab h2::after { content: ""; display: block; width: 3rem; height: 3px; margin-top: 0.8rem; border-radius: 2px; background: var(--accent); transform-origin: left; }
+
+/* Movimento: só quando a pessoa não pede redução. Só transform e opacity. */
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
   .js [data-rv]:not(.in) { opacity: 0; transform: translateY(18px); }
   [data-rv] { transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
+
+  /* Entrada do topo da página, uma vez, em sequência */
+  @keyframes sobe { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes foto-entra { from { opacity: 0; transform: translateY(20px) scale(0.96); } to { opacity: 1; transform: none; } }
+  .hero-texto > * { animation: sobe 700ms var(--ease-out) both; }
+  .hero-texto > :nth-child(2) { animation-delay: 80ms; }
+  .hero-texto > :nth-child(3) { animation-delay: 160ms; }
+  .hero-texto > :nth-child(4) { animation-delay: 240ms; }
+  .hero-foto { animation: foto-entra 900ms var(--ease-out) 120ms both; }
+
+  /* Linha do título cresce quando a seção aparece */
+  .js .secao-cab[data-rv]:not(.in) h2::after { transform: scaleX(0); }
+  .secao-cab h2::after { transition: transform 700ms var(--ease-out) 250ms; }
+
+  /* Linha do tempo: pontos e cartões entram em sequência */
+  .js .passo:not(.in) .ponto { transform: scale(0); }
+  .ponto { transition: transform 450ms var(--ease-out) 150ms; }
+  .js .passo:not(.in) .entrega { opacity: 0; transform: translateY(14px); }
+  .entrega { transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out), box-shadow 250ms ease; }
+  .entregas > li:nth-child(1) { transition-delay: 150ms; }
+  .entregas > li:nth-child(2) { transition-delay: 230ms; }
+  .entregas > li:nth-child(3) { transition-delay: 310ms; }
+  .entregas > li:nth-child(n+4) { transition-delay: 390ms; }
+
+  /* Projetos: vídeo e texto chegam de lados opostos */
+  .js .proj[data-rv]:not(.in) { transform: none; }
+  .js .proj:not(.in) .proj-video { opacity: 0; transform: translateX(-32px); }
+  .js .proj:not(.in) .proj-texto { opacity: 0; transform: translateX(32px); }
+  .js .proj.inverso:not(.in) .proj-video { transform: translateX(32px); }
+  .js .proj.inverso:not(.in) .proj-texto { transform: translateX(-32px); }
+  .proj-video, .proj-texto { transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+  .proj-texto { transition-delay: 120ms; }
+
+  /* Competências e chips em cascata */
+  .js .chips[data-rv]:not(.in) { transform: none; }
+  .js .chips:not(.in) li { opacity: 0; transform: translateY(10px); }
+  .chips li { transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out); }
+  .chips li:nth-child(3n+2) { transition-delay: 60ms; }
+  .chips li:nth-child(3n) { transition-delay: 120ms; }
+  .comps > li:nth-child(even) { transition-delay: 70ms; }
+
   .capa .play { transition: transform 200ms var(--ease-out); }
   .btn { transition: border-color 160ms ease, box-shadow 200ms ease, filter 160ms ease, transform 120ms var(--ease-out); }
-  .tema, .nav a, .comps a { transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, box-shadow 200ms ease; }
-  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 200ms; animation-timing-function: var(--ease-out); }
+  .tema, .nav a, .comps a { transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, box-shadow 200ms ease, transform 200ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) {
+    .comps a:hover, .entrega:hover { transform: translateY(-3px); }
+    .btn:hover { transform: translateY(-1px); }
+  }
+
+  /* Barra de progresso e linha do tempo ligadas à rolagem (onde o navegador suporta) */
+  @supports (animation-timeline: scroll()) {
+    @keyframes progresso { to { transform: scaleX(1); } }
+    .progresso { animation: progresso linear both; animation-timeline: scroll(root block); }
+    @keyframes desenha { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    .tempo::before { transform-origin: top; animation: desenha linear both; animation-timeline: view(); animation-range: entry 15% cover 70%; }
+  }
+
+  /* Troca de página e de tema */
+  @keyframes some { to { opacity: 0; } }
+  @keyframes aparece { from { opacity: 0; transform: translateY(8px); } }
+  ::view-transition-old(root) { animation: some 180ms ease-in both; }
+  ::view-transition-new(root) { animation: aparece 320ms var(--ease-out) 60ms both; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn:active { transform: none; }
+  .progresso { display: none; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
 }
+
+/* Blocos que ainda vão deslizar para dentro não podem criar rolagem horizontal */
+main { overflow-x: clip; }
